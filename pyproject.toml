@@ -1,0 +1,9 @@
+[project]
+name = "sunder-cleanroom-vsa-adapter"
+version = "0.1.0"
+description = "Claim-capped VSA surface adapter (sunder <-> sovereign-clean-room)"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
