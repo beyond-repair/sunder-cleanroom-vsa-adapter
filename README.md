@@ -28,11 +28,14 @@ This repository closes queue item **Q-FUNC-002** from `adl-function-census`.
 | Claimed | Not claimed |
 |---|---|
 | Both trees exist on default branch as of 2026-09-04/05 | Runtime import of either package |
-| Shared algebraic surface: bind, unbind, similarity, register/query | Vector-space isomorphism of implementations |
-| Deterministic adapter mapping + tests | Working autonomous agent across repos |
+| Shared algebraic surface names: bind, unbind, similarity | Local `def` implementations of those names |
+| register/query recorded on the sunder surface only | Vector-space isomorphism of implementations |
+| Deterministic adapter mapping + AST absence witness | Working autonomous agent across repos |
 | Distinct identities (no SUPERSEDES) | Equivalence of codebook seeds or dim |
 
 Claim cap of this repo: **MODULE_SURFACE**.
+
+`adapter/local_ops.py` treats `bind`, `unbind`, `similarity`, `register`, and `query` as contract-only strings. Tests fail if any of those names is added as a top-level function in `adapter/`. That closes GAP-BRIDGE-ADAPTER-DEFS as documented absence, not as a local algebra.
 
 ## Run
 
