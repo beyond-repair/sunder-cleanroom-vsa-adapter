@@ -1,13 +1,16 @@
-"""Deterministic mapping. Does not execute foreign packages."""
+"""Deterministic name map. Does not execute foreign packages."""
 
 from __future__ import annotations
 
 from .surfaces import (
     CLEANROOM_VSA,
     FORBIDDEN_CLAIMS,
+    OBSERVED_DATE,
     SHARED_ALGEBRA,
     SNAPSHOT_DATE,
     SUNDER_VSA,
+    UNMAPPED_SHARED_NAMES,
+    VERSION,
 )
 
 SURFACES = {
@@ -18,18 +21,35 @@ SURFACES = {
 CONTRACT = {
     "id": "Q-FUNC-002",
     "name": "sunder-cleanroom-vsa-adapter",
+    "version": VERSION,
     "snapshot_date": SNAPSHOT_DATE,
+    "observed_date": OBSERVED_DATE,
     "claim_cap": "MODULE_SURFACE",
     "shared_algebra": SHARED_ALGEBRA,
     "sunder_methods": SUNDER_VSA["symbols"]["methods"],
+    "dims": {
+        "sunder": SUNDER_VSA["default_dim"],
+        "cleanroom": CLEANROOM_VSA["default_dim"],
+        "equal": False,
+    },
     "mapping": {
-        "bind": {"sunder": "VSAMemory.bind", "cleanroom": "expected bind (unaudited AST)"},
-        "unbind": {"sunder": "VSAMemory.unbind", "cleanroom": "expected unbind (unaudited AST)"},
+        "bind": {
+            "sunder": "VSAMemory.bind",
+            "cleanroom": "CleanRoomVSAEngine.bind",
+            "equivalence": "NAME_ONLY",
+        },
+        "unbind": {
+            "sunder": "VSAMemory.unbind",
+            "cleanroom": "CleanRoomVSAEngine.unbind",
+            "equivalence": "NAME_ONLY",
+        },
         "similarity": {
             "sunder": "VSAMemory.similarity",
-            "cleanroom": "expected similarity (unaudited AST)",
+            "cleanroom": "CleanRoomVSAEngine.similarity",
+            "equivalence": "NAME_ONLY",
         },
     },
+    "unmapped_shared_names": UNMAPPED_SHARED_NAMES,
     "identities_distinct": True,
     "supersedes": None,
     "forbidden_claims": FORBIDDEN_CLAIMS,

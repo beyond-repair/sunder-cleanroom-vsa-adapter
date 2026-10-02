@@ -1,9 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "sunder-cleanroom-vsa-adapter"
-version = "0.1.0"
-description = "Claim-capped VSA surface adapter (sunder <-> sovereign-clean-room)"
+version = "0.1.1"
+description = "Claim-capped name-only VSA surface map between sunder and sovereign-clean-room. Not a runtime import and not an isomorphism."
 requires-python = ">=3.11"
-dependencies = []
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.5"]
+
+[tool.setuptools.packages.find]
+include = ["adapter*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
